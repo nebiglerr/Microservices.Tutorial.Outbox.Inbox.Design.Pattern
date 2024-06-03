@@ -108,9 +108,9 @@ curl -X POST "https://localhost:5001/create-order" -H "Content-Type: application
 
 2. Sipariş Oluşturma İş Akışı
 
-~~a =>~~ Order.API'de /create-order endpointine istek gönderildiğinde, sipariş oluşturulur ve OrderOutbox tablosuna bir kayıt eklenir.
-~~b =>~~ Order.Outbox.Table.Publisher.Service'de tanımlanan Quartz.NET job'ı, OrderOutbox tablosundaki yeni kayıtları kontrol eder ve RabbitMQ'ya OrderCreatedEvent mesajını gönderir.
-~~c =>~~ Stock.Service bu mesajı tüketir ve stok bilgilerini günceller.
+- Order.API'de /create-order endpointine istek gönderildiğinde, sipariş oluşturulur ve OrderOutbox tablosuna bir kayıt eklenir. 
+- Order.Outbox.Table.Publisher.Service'de tanımlanan Quartz.NET job'ı, OrderOutbox tablosundaki yeni kayıtları kontrol eder ve RabbitMQ'ya OrderCreatedEvent mesajını gönderir.
+- Stock.Service bu mesajı tüketir ve stok bilgilerini günceller.
 
 3. Mimari
 
